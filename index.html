@@ -1,0 +1,1865 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Faster and Smarter Development with Drupal Console</title>
+
+		<meta name="description" content="Faster and Smarter Development with Drupal Console">
+		<meta name="author" content="Jesus Manuel Olivas">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style"
+					content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0,
+		maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<!-- <link rel="stylesheet" href="lib/css/zenburn.css"> -->
+		<link rel="stylesheet" href="lib/css/tomorrow-night-bright.css">
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container displayed as slide -->
+			<div class="slides">
+
+				<section >
+					<br/>
+					<h1 class="big">Faster and Smarter Development with Drupal Console</h1>
+					<img src="assets/images/drupal-console.png" class="no-border">
+					<p>
+						<!-- <a href="http://bit.ly/melbourne-console">http://bit.ly/melbourne-console</a> -->
+					</p>
+					<aside class="notes">
+						
+					</aside>
+				</section>
+
+			<section>
+					<h2>About us and who maintain this project?</h2>
+					<hr/>
+					<div class="half">
+						<div class="how-maintain">
+						<img src="assets/images/dmouse.jpg" class="avatar">
+						<p>David Flores ‏| <strong>@dmouse</strong></p>
+						</div>
+						<div class="how-maintain">
+							<img src="assets/images/enzolutions.jpg" class="avatar">
+						<p>Eduardo García | <strong>@enzolutions</strong></p>
+						</div>
+					</div>
+					<div class="half">
+						<div class="how-maintain">
+						<img src="assets/images/jmolivas.jpg" class="avatar">
+						<p>Jesús Manuel Olivas | <strong>@jmolivas</strong></p>
+						</div>
+						<div class="how-maintain">
+							<img src="assets/images/omero.jpg" class="avatar">
+						<p>Omar Aguirre | <strong>@omers</strong></p>
+						</div>
+					</div>
+					<aside class="notes">
+						<h3>enzo</h3>
+						<p>
+							This project was started back in 2013 by David Flores and myself (Jesus Manuel Olivas) we are both Mexican developers.
+						</p>
+						<p>
+							But as the project start getting some traction, two other developers join to help co-maintaing it.
+						</p>
+						<p>
+							Omar Aguirre another developer from Mexico.
+						</p>
+						<p>
+							And Eduardo García a Colombian developer living in Costa Rica.
+						</p>
+
+					</aside>
+				</section>
+
+				<section>
+					<h2 class="medium">What is the Drupal Console?</h2>
+					<hr/>
+					<br/>
+					<h3 class="title">
+						It is a suite of tools that you run on a command line interface (CLI) to generate boilerplate code and interact with a Drupal 8 installation.
+					</h3>
+					<aside class="notes">
+						<h3>jmolivas</h3>
+						<p>
+							Starting with the topic of the day. I will exaplin you What is the Drupal Console?
+						</p>
+						<p>
+							The Drupal Console is a suite of tools that you run on the (CLI) to generate boilerplate code and interact with a Drupal 8 installation.
+						</p>
+						<p>
+							Yes I know this sounds like a tool you already know, and it's called drush.
+						</p>
+						<p>
+							There are similitudes and differences, that I will show ypu during this presentation.
+						</p>
+						<p>
+							<strong>But ... I want to clarify one important point:</strong>
+						</p>
+						<ul>
+							<li>Drupal Console is not a Drupal Module.</li>
+							<li>Drupal Console is a Symfony Application.</li>
+						</ul>
+						<p>The DrupalConsole application takes advantage of Symfony Console Component and other third party libraries.
+						</p>
+						<p>
+							DrupalConsole has been built to utilize the same modern PHP practices which were introduced in Drupal 8.
+						</p>
+
+					</aside>
+				</section>
+
+				<section>
+					<h2>Supporting organizations</h2>
+					<hr/>
+					<br/>
+					<p>
+						<p>
+						<a target="_blank"  href="http://www.ffw.co">
+							<img src="assets/images/ffw-logo.png" class="no-border" >
+						</a>
+						</p>
+					</p>
+					<br/>
+					<p>
+						<a target="_blank"  href="http://www.indava.com/">
+							<img src="assets/images/indava-logo.png" class="no-border">
+						</a>
+					</p>
+					<br/>
+					<p>
+						<a target="_blank"  href="http://www.anexusit.com/">
+							<img src="assets/images/anexus-logo.png" class="no-border">
+						</a>
+					</p>
+					<aside class="notes">
+						<h3>enzo</h3>
+						<p>I want to thank the agencies sponsoring this project.</p>
+						<ul>
+							<li>FFW (formerly Blink Reaction and Propeople) the biggest drupal agency on the world. Is sponsoring me to work full time in this project.</li>
+							<li>Indava a Web developer agency in Mexico is sponsoring David's contributions.</li>
+							<li>AnexusIT the oldest and biggest DrupalShop in Costa Rica is sponsoring enzo's contributions.</li>
+							<li>The only one living in the wild is Omar Aguirre, please feel free to invite him a beer or two.</li>
+						</ul>
+					</aside>
+				</section>
+
+
+				<section data-background="#0076C2">
+							<h1 class="medium white">Why should you care about it?</h1>
+				</section>
+
+				<section>
+					<h2>Drupal is more tehcnically advanced</h1>
+					<h2>
+					<hr/>
+					<img class="no-border" src="assets/images/drupal-8-changes.png">
+					<aside class="notes">
+						<h3>@omers</h3>
+						<p>
+							Drupal 8 is more technically advanced compared to its predecessor and managing the increasing complexity of Drupal 8 could be a daunting task for anyone. Drupal Console is a suite of tools to help manage that complexity. Writing a Drupal 8 module now involves a lot more boilerplate code and there is a lot you need to know and do just to get started building a new module. 
+						</p>
+						<p>
+							I will list some differences between Drupal 8 and 7, related to writing a module.
+						</p>
+							<ul>
+								<li>Drupal 8 is object oriented and Drupal 7 is mostly procedural.</li>
+								<li>Each class will need a namespace and must be created within and specific directory.</li>
+								<li>Each class must include other classes defined within a namespace.</li>
+								<li>Each class could extend or implement another classes.</li>
+								<li>Drupal 8 takes advantage of external libraries.</li>
+								<li>Drupal 8 uses .yml files for configuration.</li>
+								<li>Drupal 8 uses plugins which provide reusable pieces of functionality.</li>
+								<li>Drupal 8 uses PHP annotations. The Drupal 8 plugin system uses them to describe plugins and they are used by Drupal to discover your plugin.</li>
+							</ul>
+					</aside>
+				</section>
+
+				<!-- <section data-background="#0076C2">
+					<h1 class="medium white">How does Drupal Console help?</h1>
+					<aside class="notes">
+						<ul>
+							<li>
+								<p>
+								The main goal of DrupalConsole is, to help you developing faster and smarter with Drupal 8.
+								</p>
+							</li>
+							<li>
+								<p>
+								Drupal Console provides a number of commands for creating module scaffolding and boilerplate code. For each command, you will be asked a series of questions about what you want to generate.
+								</p>
+							</li>
+							<li>
+								<p>
+								Drupal Console allows you to interact with your Drupal installation from rebulding cache, installing modules, debugging the syustem to configuration management.
+								</p>
+							</li>
+							<li>
+								<p>
+								You can even learn Drupal 8, inspecting the generated comment blocks while using --learning option. (similar to examples module)
+								</p>
+							</li>
+						</ul>
+					</aside>
+				</section> -->
+
+
+				<section>	
+					<h2>Topics</h2>
+					<hr/>
+					<ul class="bullets medium">
+						<li>Where to find and how to Download Drupal Console</li>
+						<li>Generate code/files required by a Drupal 8 module.</li>
+						<li>Interact with your Drupal 8 installation.</li>
+						<li>Learn Drupal 8.</li>
+						<li>Write an integration.</li>
+						<li>Automate command execution.</li>
+						<li>Remote command execution.</li>
+						<li>Contribute to the project and Roadmap.</li>
+					</ul>
+					<aside class="notes">
+					</aside>
+				</section>
+
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Where do you find the project?</h1>
+			<aside class="notes">
+				<p>
+					At this point, you may be asking yourself. 
+				</p>
+				<p>
+					Where do I find this awesome project?
+				</p>
+				<p>
+					well ...
+				</p>
+			</aside>
+
+		</section>
+
+		<section>
+			<p>
+				<h3 class="title">Landing Page</h3>
+				<a target="_blank"  href="http://drupalconsole.com">
+					http://drupalconsole.com/
+				</a>
+			</p>
+			<br/>
+			<p>
+				<h3 class="title">Documentation</h3>
+				<a href="http://bit.ly/console-book">
+					http://bit.ly/console-book
+				</a>
+				</h3>
+			</p>
+			<br/>
+			<p>
+				<h3 class="title">Support</h3>
+				<a href="http://bit.ly/console-support">
+					http://bit.ly/console-support
+				</a>
+			</p>
+			<aside class="notes">
+				<h3>omers</h3>
+				<p>
+					Just by visiting the project landing page.
+				</p>
+				<p>
+					drupalconsole[dot]com
+				</p>
+				<p>
+					In this landing page you will find information and links about documentation and how to get support.
+				</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Download Drupal Console</h1>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					Now, let me show you how to download and use the DrupalConsole project.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Using the Installer</h2>
+			<hr/>
+<p>
+Install the Console locally by running the installer <br/> in your project directory:
+</p>
+<br/>
+<pre><code class="bash text-medium">
+$ curl http://drupalconsole.com/installer | php
+
+$ mv console.phar /usr/local/bin/drupal
+
+$ drupal
+
+</code></pre>
+		<aside class="notes">
+			<h3>jmolivas</h3>
+			<p>
+				There are different ways to get the project on your local machine.
+			</p>
+			<p>
+				My recomendation, for getting the project on your local machine is by using the installer.
+			</p>
+		</aside>
+		</section>
+
+		<section>	
+			<img class="no-border" src="assets/images/console-installer.png" alt="">
+			<aside class="notes">
+				<p>
+					You can install the Drupal Console locally by running the installer in your project directory, the installer will take care of downloading the necesary files to run drupal console on you computer.
+				</p>
+				<p>
+					The installer script will simply check some php.ini settings, warn you if they are set incorrectly, and then download the latest console.phar in the current directory.
+				</p>
+<!-- 				<p>
+					You can place this file anywhere you wish. If you put it in your PATH, you can access it globally. On unixy systems you can even make it executable and invoke it without php.
+				</p> -->
+				<p>
+					You can use it as local file by typing php console.phar
+
+				</p>
+				<p>
+					But if want to access DrupalConsole from anywhere on your system, you need to move to a global accesible path.
+				</p>
+				<p>
+					NOTE: In this example I am moving the executable phar file to "/usr/local/bin/drupal". 
+					<br/>
+					The name drupal is just an alias you can name it anything you like.
+				</p>
+
+			</aside>
+		</section>
+
+		<section>
+			<h2>Using Composer</h2>
+			<hr/>
+<pre><code class="bash text-medium">
+$ composer global require drupal/console:@stable
+
+# download at: 
+# ~/.composer/vendor/drupal/console 
+
+# run it using:
+$ ~/.composer/vendor/bin/console
+
+</code></pre>
+<p>
+	<br/>
+	<a href="http://hechoendrupal.gitbooks.io/drupal-console/content/using/composer.html">Gitbook - Using Composer</a>
+</p>
+		<aside class="notes">
+			<p>
+				You can install this project using composer global require command. 
+			</p>
+			<p>
+				Same as the instaler example, if may you want to access globally. In this case you need to add the binary directory to your class path.
+			</p>
+		</aside>
+		</section>
+
+		<section>
+			<h2>Using Drupal Composer</h2>
+			<hr/>
+<pre><code class="bash text-medium">
+$ composer create-project 
+  drupal-composer/drupal-project:8.x-dev 
+  drupal8.dev 
+  --stability dev 
+  --no-interaction
+
+</code></pre>
+<p>
+	<br/>
+	<a href="https://github.com/drupal-composer/drupal-project">https://github.com/drupal-composer/drupal-project</a>
+</p>
+		<aside class="notes">
+			<p>
+			You can also, use the DrupalComposer project a "Composer template for Drupal projects." and use composer create-project command.	
+			</p>
+			<p>
+				This template take care of downloading Drupal8, Drush, DrupalConsole and other tools.  
+			</p>
+		</aside>
+
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Copy configuration files</h1>
+		</section>
+
+		<section>
+			<h2>init</h2>
+			<hr/>
+		<p>
+			<br/>
+			<img class="no-border" src="assets/images/drupal-init.png" alt="">
+		</p>
+
+		<aside class="notes">
+			<p>
+				Use the init command to copy the configurations files, overriding values on these files is how you can change DrupalConsole behaviour. 
+			</p>
+		</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Generate the code and files</h1>
+			<h1 class="medium white">required by a Drupal 8 module.</h1>
+			<aside class="notes">
+				<h3>omers</h3>
+				<p>
+					Remember what I told you about, Drupal Console provides a number of commands for creating module scaffolding and boilerplate code.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>generate:module</h2>
+			<hr>
+			<aside class="notes">
+				<p>
+					In order to extend Drupal we need to add a module, Now I will show you how DrupalConsole can help us on this task.
+				</p>
+			</aside>
+		</section>
+
+		<section>	
+			<img class="no-border" src="assets/images/console-generate-module.png" alt="">
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<aside class="node">
+					<p>
+						As you can see, we are using the interactive mode where the user can provide the basic information (like module, name, description, package ...) to generate a custom Drupal 8 moddule.
+					</p>
+					<p>
+						We can alose see a report with the generated/updated file list.
+					</p>
+					<p>
+						As result we get a fully funcional module brand new module. Ready to be used on you Drupal 8 installation.
+					</p>
+				</aside>
+			</aside>
+		</section>
+
+		<section>
+			<h2>generate:controller</h2>
+			<hr>
+			<aside class="notes">
+				<p>
+					In Drupal 8 we won’t need hook_menu() anymore as we make heavy use of the Symfony2 components to handle the routing. This involves defining the routes as configuration and handling the callback in a controller (the method of a Controller class).
+				</p>
+			</aside>
+		</section>
+
+		<section>	
+			<img class="no-border" src="assets/images/generate-controller.png" alt="">
+		</section>
+
+		<section>	
+			<img class="no-border" src="assets/images/generate-controller-routing.png" alt="">
+		</section>
+
+		<section>	
+			<img class="no-border" src="assets/images/generate-controller-class.png" alt="">
+		</section>
+
+		<section>
+			<h2>generate:form:config</h2>
+			<hr>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					Other component you will be requiring a lot within a contributed module is a configuration form.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<img class="no-border" src="assets/images/console-generate-form-config.png" alt="">
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<aside class="notes">
+					<p>
+						Same as in the previous example, I am showing you the interactive mode.
+					</p>
+					<p>
+						What do you need to generate a Form in Drupal 8.
+						You need a route, a form class and some field definitions,
+					</p>
+					<p>
+						 Well all those features are added by the generator.
+					</p>
+					<p>
+						As you can see here, if you answer yes to "Do you want to generate a form structure" question, you will be ask to add fields.
+					</p>
+					<p>
+						The generated form included an integration with the configuration system, in order to store the user input values, when submiting the form.
+					</p>
+				</aside>
+			</aside>
+		</section>
+
+		<section>
+			<h3>example.routing.yml</h3>
+			<img class="no-border" src="assets/images/console-generate-form-config-routing.png" alt="">
+			<aside class="notes">
+				<p>
+					In order to use this form we need to provide a route for it.
+				</p>
+				<p>
+					DrupalConsole creates for you the routing definition and use ther proper configuration, to specify that the target is a form class. And the value is the class name we just generated.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h3>src/Form/ExampleForm.php</h3>
+			<img class="no-border" src="assets/images/console-generate-form-config-class.png" alt="">
+			<aside class="notes">
+				<p>
+					In Drupal 8, form definition functions are all grouped together inside a class.
+				</p>
+				<p>
+					That class must be defined on a specific namespace and the file created on the proper directory.
+				</p>
+				<p>
+					The generator command, also added the required use statements and extend the proper class.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h3>src/Form/ExampleForm.php</h3>
+			<img class="no-border" src="assets/images/console-generate-form-config-fields.png" alt="">
+			<aside class="notes">
+				Generated input fields are Form API compliant.
+			</aside>
+		</section>
+
+		<section>
+			<h3>src/Form/ExampleForm.php</h3>
+			<img class="no-border" src="assets/images/console-generate-form-config-cmi.png" alt="">
+			<aside class="notes">
+				DrupalConsole also generates the integration with the configuration managemente in order to save user input.
+			</aside>
+		</section>
+
+		<section>
+			<h2>generate:plugin:block</h2>
+			<hr>
+<div>
+<pre><code class="bash text-big">
+$ drupal generate:plugin:block
+  --module="example"
+  --class-name="ExampleBlock"
+  --label="example_block"
+  --plugin-id="example_block"
+  --no-interaction
+
+</code></pre>
+</div>
+			<aside class="notes">
+				<h3>enzo</h3>
+				<p>So far we have seen the interactive mode, which it is a little bit more flashy since you can see the questions and the entered answer.</p>
+
+				<p>But, starting from now we will show how to execute commands passing inline arguments, which is way more faster.</p>
+
+				<p>
+					Make sure while executing commands using the inline mode to pass the "--no-interaction" op
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<img class="no-border" src="assets/images/console-generate-plugin-block.png" alt="">
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					Blocks in Drupal 8 are plugins, creating a plugin can be a little tricky, because you need to add annotations in order to this new block can be discoverable by the system.
+				</p>
+				<p>
+					But do not worry, beacuse console take care of adding them.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<img class="no-border" src="assets/images/console-generate-plugin-block-class.png" alt="">
+			<aside class="notes">
+				<p>
+				DrupalConsole generation add the required plugin block type anotations. 
+			</p>
+			<p>
+				Using these annotations we let Drupal know that we want to register a new block type 
+			</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>generate:entity:content</h2>
+			<hr>
+<div>
+<pre><code class="bash text-big">
+$ drupal generate:entity:content
+  --module="example"
+  --entity-class="Foo"
+  --entity-name="foo"
+  --no-interaction
+
+</code></pre>
+</div>
+		<aside class="notes">
+			<h3>jmolivas</h3>
+			<p>
+				I have been showing you commands generating two or there files, which is probably not too impresive.
+			</p>
+			<p>
+				Remember what I told you about complexity in Drupal 8 ?.
+			</p>
+			<p>
+				Adding an entity on Drupal 8 is a complex task. 
+			</p>
+		</aside>
+		</section>
+
+		<section>
+			<img class="no-border" src="assets/images/console-generate-entity-content.png" alt="">
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>Because you need to create/update about 14 files.</p>
+				<p>
+					Those files are classes, forms, routes and menu links.
+				</p>
+				<p>
+					Entities are plugins and require to add annotations same as in the block generation that code is added by the command.
+				</p>
+				<p>
+					The generated entity is fieldable from de UI and provides Views integration.
+				</p>
+			</aside>
+		</section>
+
+<!-- 
+		<section>
+			<h2>generate:theme</h2>
+			<hr/>
+<pre><code class="bash text-big">
+$ drupal generate:theme
+
+</code></pre>
+		</section>
+
+		<section>
+			<img src="assets/images/generate-theme.png">
+		</section>
+ -->
+		<section>
+			<h2>Other generators</h2>
+			<hr/>
+<pre><code class="bash text-medium">
+  generate:authentication:provider 
+  generate:entity:config       
+  generate:event:subscriber  
+  generate:permissions
+  generate:plugin:field             
+  generate:plugin:fieldformatter    
+  generate:plugin:fieldtype         
+  generate:plugin:fieldwidget       
+  generate:plugin:imageeffect       
+  generate:plugin:rest:resource     
+  generate:plugin:rulesaction       
+  generate:plugin:type:annotation   
+  generate:plugin:type:yaml         
+  generate:service
+  generate:theme
+
+</code></pre>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Interact with your Drupal</h1>
+			<h1 class="medium white">installation.</h1>
+			<aside class="notes">
+				<h3>omers</h3>
+				<p>
+					We started the project as a scaffolding code generator.
+				</p>
+				<p>
+					But eventually we have needed to test the generated code.
+				</p>
+				<p>
+					For that reason we added commands to interact with the Drupal Installation.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>site:new</h2>
+			<hr/>
+			<p>
+				<img class="no-border" src="assets/images/site-new.png">
+			</p>
+			<aside class="notes">
+				<p>
+					You can download Drupal 8 using the site:new command.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>site:install</h2>
+			<hr/>
+			<p>
+				<img class="no-border" src="assets/images/site-install.png">
+			</p>
+			<aside class="notes">
+				<p>
+					You can install Drupal 8 using the site:install command.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>container:debug</h2>
+			<hr/>
+			<p>
+				<img class="no-border" src="assets/images/container-debug.png">
+			</p>
+			<aside class="notes">
+				<p>
+					Using the container:debug command, you can list the registered services on service container within the current Drupal instance.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>router:debug</h2>
+			<hr/>
+			<p>
+				<img class="no-border" src="assets/images/router-debug.png">
+			</p>
+			<aside class="notes">
+				<p>
+					Similar to the previous example.
+				</p>
+				<p>
+					The router:debug command, helps you list the registered routes on the routing system, within the current Drupal instance.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>router:debug</h2>
+			<hr/>
+			<p>
+				<img class="no-border" src="assets/images/router-debug-detail.png">
+			</p>
+			<aside class="notes">
+				<p>
+					You can inspect a route definition just by passingthe route_name as argument to the router:debug command.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>site:mode</h2>
+			<hr/>
+			<p>
+				<img class="no-border" src="assets/images/site-mode.png">
+			</p>
+			<aside class="notes">
+				<p>
+					You can turn on/off several caching configuration by switching your site to production/development mode, using the site:mode command 
+				</p>
+				<p>
+					This command is useful, when cloning a project to run on your local machine.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>site</h2>
+			<hr/>
+<pre><code class="bash text-big">
+site
+  site:maintenance [ON/OFF]
+  site:status 
+
+</code></pre>
+		</section>
+
+		<section>
+			<h2>config</h2>
+			<hr/>
+<pre><code class="bash text-medium">
+config
+  config:debug                
+  config:edit                 
+  config:export               
+  config:export:content:type  
+  config:export:single        
+  config:export:view          
+  config:import               
+  config:import:single        
+  config:override             
+
+</code></pre>
+		</section>
+
+		<section>
+			<h2>user</h2>
+			<hr/>
+<pre><code class="bash text-big">
+user
+  user:login:clear:attempts
+  user:login:url
+  user:password:hash       
+  user:password:reset
+
+</code></pre>
+		<aside class="notes">
+			<p>
+			<ul>
+				<li>Clear login failed attempts for an account.</li>
+				<li>Returns a one time user login url.</li>
+				<li>Generate a hash from a plaintext password.</li>
+				<li>Reset password for a specific user.</li>
+			</ul>
+			</p>
+		</aside>
+	</section>
+
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Learn Drupal 8.</h1>
+		</section>
+
+		<section>
+			<h2>Use --learning option</h2>
+			<hr/>
+<pre><code class="bash text-big">
+$ drupal generate:controller
+  --module="example"
+  --class-name="ExampleController"
+  --method-name="hello"
+  --route="/hello/{name}"
+  --learning
+  --no-interaction
+
+</code></pre>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<ul>
+					<li>I can imagine some of you, are thinking in use the generated code to learn Drupal 8 by applying Reverse Engineering.</li>
+				</ul>
+				<p>
+					However, this approach coud not be enough.
+				</p> 
+				<p>
+					For that reason we provide you with an option to provide extra information to the generated code.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<img src="assets/images/generate-controller-learning.png">
+			<aside class="notes">
+				<p>
+					When executing a command using the "--learning" option, aditionaly to the generated boilerplate code, a commented block messages will be added, describing the code functionality.
+				</p>
+				<p>
+					NOTE: This option is only available for the "generate:controller" command, please let us now, where do you think this could be helpful.
+				</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Write an integration</h1>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					If you are a module maintainer. You can write an integration to take advantage of drupal console features.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>generate:command</h2>
+			<hr>
+
+<pre><code class="bash text-big">
+$ drupal generate:command
+  --module="example"
+  --class-name="HelloCommand"
+  --command="example:hello"
+  --no-interaction
+
+</code></pre>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					The easy way to generate an integration is to execute the generate:command command.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<p>
+				<img class="no-border" src="assets/images/console-generate-command.png">
+			</p>
+			<aside class="notes">
+				<h3>enzo</h3>
+				<p>
+					This command will generate all the boiler-plate code to write a new command within your drupal 8 module.
+				</p>
+				<p>
+					From there you can implement your bussines logic.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>webprofiler</h2>
+			<hr>
+			<br/><br/>
+			<p>
+				<img src="assets/images/webprofiler.png" class="no-border">
+			<br/><br/>
+				<a target="_blank" href="https://www.drupal.org/project/webprofiler">
+					<h3 class="title">https://www.drupal.org/project/webprofiler</h3>
+				</a>
+			</p>
+
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					Let me tell you about the awesome webprofiler project. Which is an implementation of Symfony WebProfiler.
+				</p>
+				<p>
+					The web-profiler collects information for all requests.
+				</p>
+				<p>
+					You can see how long the page take to load, how much memory was used, the number of executed SQL querys, the loaded forms and blocks, the current logged user between others.
+				</p>
+				<p>
+					This module was the first module to take advantage of Drupal Console features.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>webprofiler:benchmark  </h2>
+			<hr/>
+			<img class="no-border" src="assets/images/webprofiler-benchmark.png">
+			<aside class="notes">
+			<p>
+				This command allow you to execute several request against your Drupal site and show you a result of average execution time and cosumed memory.
+			</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>webprofiler</h2>
+<pre><code class="bash text-big">
+  webprofiler:benchmark             
+  webprofiler:export                
+  webprofiler:list                  
+
+</code></pre>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Automate command execution</h1>
+			<aside class="notes">
+				<h3>enzo</h3>
+				<ul>
+					<li>We have mentioned how to run individual commands.</li>
+					<li>But if you are looking to automate command execution you can use the chain command.</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>chain</h2>
+			<hr/>
+<pre><code class="bash text-big">
+$ drupal chain
+  --file=~/path/to/start-project.yml
+
+</code></pre>
+		<aside class="notes">
+<p>	
+The need for it became clear when we were executing commands like "generate:controller" and needed to execute another command by hand such as "router:rebuild" to rebuild the routing system. 
+<p>
+The initial idea was to chain command execution within commands.
+</p>
+		</aside>
+
+		</section>
+
+		<section>
+			<img class="no-border" src="assets/images/chain-sample.png">
+			<aside class="notes">
+<p>
+When that functionality was completed I had a discussion with the other project maintainers and we came up with the idea to create a command that could read a configuration file containing a queue and execute several commands based on the sequence defined in the configuration file.	
+</p>
+<p>
+	We decide to use a standard YAML file extension and not go with something like chain extension because we did not want to add a new Drupalism to the project.
+</p>
+<p>
+<h3>How this command can help you?</h3>
+You can create your own chain command and define the common Drupal 8 features you use while writing a Drupal 8 module and execute one command to have those features generated, as example:
+</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Remote command execution</h1>
+			<aside class="notes">
+				<p>
+					Sites featur allow us to execute commands on any remote or local site from the local terminal.
+			</aside>
+		</section>
+
+		<section>
+			<h2>site:debug</h2>
+			<hr/>
+			<img class="no-border" src="assets/images/site-debug-1.png">
+		</section>
+
+		<section>
+			<h2>site:debug drupal8links.dev</h2>
+			<hr/>
+			<img class="no-border" src="assets/images/site-debug-2.png">
+		</section>
+
+		<section>
+			<h2>drupal --target=drupal8links.dev cr all</h2>
+			<hr/>
+			<img class="no-border" src="assets/images/drupal-target.png">
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Tips</h1>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 1</h1>
+			<h3 class="title white">Use --root option</h3>
+<pre><code class="bash text-medium">
+$ drupal --root=/var/www/drupal8.dev
+
+</code></pre>
+		<aside class="notes">
+			<p>
+				You can interact with any local site by using the --root option.
+			</p>
+		</aside>
+		</section>
+ 
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 2</h1>
+			<h3 class="title white">Use multilanguage feature</h3>
+<pre><code class="bash text-medium">
+# ~/.console/config.yml
+
+application:
+  environment: 'prod'
+  language: en #available: en,es,fr,hu,pt,ro
+  editor: vim
+  temp: /tmp
+
+</code></pre>
+		<aside class="notes">
+			<p>
+			The DrupalConsole project is multilingual, jsut by changing the language value, you can tun the project in a supported language.   
+			</p>
+		</aside>
+		</section>
+
+		<section>
+			<img class="no-border" src="assets/images/generate-controller-es.png">
+			<aside class="notes">
+				<p>
+					As you can see it here, question can be translated.
+				</p>
+				<p>
+					Do you remember the "--learning" option I mentioned before, the commented messages also support this multilingual feature.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<img class="no-border" src="assets/images/controller-learning-es.png">
+			<aside class="notes">
+				<p>
+					You can set default values for commands (options and arguments), this is useful when you are working on a project and you dont want to type the module every time you generate a component.  
+				</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 3</h1>
+			<h3 class="title white">Use default values</h3>
+<pre><code class="bash text-medium">
+# ~/.console/config.yml
+application:
+
+...
+
+  default:
+    commands:
+      generate:
+        controller:
+          options:
+            module: my_current_project
+
+</code></pre>
+			<aside class="notes">
+				<p>
+					You can set default values for commands (options and arguments), this is useful when you are working on a project and you dont want to type the module every time you generate a component.  
+				</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 4</h1>
+			<h3 class="title white">Disable contributed commands</h3>
+<pre><code class="bash text-medium">
+# ~/.console/config.yml
+application:
+
+...
+
+  disable:
+    modules:
+      - broken_module_name_one
+      - broken_module_name_two
+
+</code></pre>
+			<aside class="notes">
+				<p>
+					Since any module can add provide an integration and add comands.
+				</p>
+				<p>
+					Disabling those module-commands to get loaded could be useful, when any those are introducing issues or errors. 
+				</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 5</h1>
+			<h3 class="title white">Use command alias</h3>
+<pre><code class="bash text-medium">
+$ drupal cr all
+
+# ~/.console/aliases.yml
+application:
+  aliases:
+    commands:
+      cache:
+        rebuild:
+            - cr
+
+</code></pre>
+			<aside class="notes">
+				<p>
+					You can type less by taking advantage of the provided command alias.
+				</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 6</h1>
+			<h3 class="title white">Use --help option</h3>
+<pre><code class="bash text-medium">
+$ drupal generate:module --help
+
+</code></pre>
+		</section>
+
+		<section>
+			<img class="no-border" src="assets/images/generate-module-help.png">
+		<aside class="notes">
+			<p>
+				I highly recomend you to used the "--help" to learn about provided options and arguments for each command.
+			</p>
+		</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 7</h1>
+			<h3 class="title white">Use --generate-inline</h3>
+<pre><code class="bash text-medium">
+$ drupal generate:entity:config --generate-inline
+
+</code></pre>
+		<aside class="notes">
+			<p>
+				Remember the inline option execution.
+			</p>
+		</aside>
+
+		</section>
+
+		<section>
+			<img src="assets/images/generate-inline.png" class="no-border">
+			<aside class="notes">
+				<p>
+					You do not need to know each required option and argument, you can execute a command using the interactive mode, and just by passing the "--generate-inline" option.
+				</p>
+				<p>
+					The command will output the inline instruction, to execute the command the next time.
+				</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 8</h1>
+			<h3 class="title white">Use --generate-chain</h3>
+<pre><code class="bash text-medium">
+$ drupal generate:module --generate-chain
+
+</code></pre>
+		</section>
+
+		<section>
+			<img src="assets/images/generate-chain.png" class="no-border">
+			<aside class="notes">
+				<p>
+					Executing a command and passing the "--generate-chain" option.
+				</p>
+				<p>
+					The command will output the YAML code, to copy and paste, this could be used when executing the chain command.
+				</p>
+			</aside>
+		</section>
+
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 9</h1>
+			<h3 class="title white">Use --generate-doc</h3>
+<pre><code class="bash text-medium">
+$ drupal webprofiler:benchmark --generate-doc
+
+</code></pre>
+		<aside class="notes">
+			<p>
+				If you write an integration with your module and want to generate a markdown representation of the commmad definition I mean options and arguments you can pass the "generate-doc" option.
+			</p>
+		</aside>
+		</section>
+
+		<section>
+			<img src="assets/images/generate-doc.png" class="no-border">
+			<aside class="notes">
+				<p>
+					This will output a valid markdown code you can copy and paste on your module, readme file.
+				</p>
+			</aside>
+		</section>
+
+<section data-background="#0076C2">
+			<h1 class="medium white">#Protip 10</h1>
+			<h3 class="title white">Use peco command</h3>
+<pre><code class="bash text-medium">
+$ drupal router:debug 
+  | peco | awk -F ' ' '{print $1}' | 
+  xargs drupal router:debug
+
+</code></pre>
+<p>
+	<br/>
+	<h3 class="title">
+		<a class="white" href="https://github.com/peco/peco">
+			https://github.com/peco/peco
+		</a>
+	</h3>
+</p>
+		<aside class="notes">
+			<p>
+				I totally agree the router:debug and container:debug output is not the best in the world.
+			</p>
+			<p>
+				But you can take advantage of tools like peco an interactive filtering tool.
+			</p>
+		</aside>
+
+		</section>
+
+		<section>
+			<img src="assets/images/router-debug-peco.png" class="no-border">
+			<aside class="notes">
+				<p>
+					And then make your result looks like this.
+				</p>
+				<p>
+					Peco provide filtering and arrow selection out-of-the-box.
+				</p>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Update Drupal Console</h1>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					We provide a command to update to the latest versin..
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>self-update</h2>
+			<hr/>
+			<br/>
+			<p>Depending on the download method:</p>
+			<br/>
+<pre><code class="bash text-big">
+$ drupal self-update
+
+$ console self-update
+
+$ php console.phar self-update
+
+</code></pre>
+		<aside class="notes">
+			<h3>jmolivas</h3>
+			<p>
+				Drupal 8 is under heavy development, to keep in sync with the latest changes. The easiest and recommended way of updating Console is using the self-update command.
+			</p>
+		</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Environment setup</h1>
+		</section>
+
+		<section>
+			<h2>Using a Virtual Machine</h2>
+			<hr/>
+			<br/>
+			<ul class="bullets">
+				<li>
+					<h3>DrupalVM</h3>
+					<p>A VM for local Drupal development</p>
+					<p><a href="http://www.drupalvm.com/">http://www.drupalvm.com/</a></p>
+				</li>
+				<li>
+					<h3>Drupal 8 Sprint Box</h3>
+					<p>Simple Drupal 8 Development Environment</p>
+					<p><a href="https://github.com/thom8/drupal8-vagrant">https://github.com/thom8/drupal8-vagrant</a></p>
+				</li>
+			</ul>
+			<aside class="notes">
+				You can also take advantage of a Virtual Machine to provide the LAMP stack plus Drupal 8, drush, DrupalConsole and other tools.
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">How to contribute?</h1>
+
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					I mentioned about integration, using as example the webprofiler module, and I like to talk about contribution.
+				</p>
+				<p>
+					Anyone can contribute, you can add new features, write an integration with your custom module, improve transaltions and documentation.
+				</p>
+				<p>
+					But first you need to get the code right.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Getting the project</h2>
+			<hr/>
+			<p>Fork your own copy of the Console repository</p>
+			<p>
+			<a target="_blank"  href="http://bit.ly/console-fork">http://bit.ly/console-fork</a>
+			</p>
+			<br/>
+			<p>Clone your forked repository.</p>
+<pre><code class="bash">
+$ git clone git@github.com:[github-user]/DrupalConsole.git
+
+</code></pre>
+<br/>
+<p>Download dependencies using componser.</p>
+<pre><code class="bash">
+$ cd /path/to/DrupalConsole
+$ composer install
+
+</code></pre>
+		<aside class="notes">
+			<h3>jmolivas</h3>
+			<p>
+				... Getting the project is as easy as follow this 3 steps.
+			</p>
+			<ol>
+				<li>
+					<p>Fork the project</p>
+				</li>
+				<li>
+					<p>Clone your fork</p>
+				</li>
+				<li>
+					<p>Download dependencies</p>
+				</li>
+			</ol>
+		</aside>
+		</section>
+
+		<section>
+			<h2>Before commiting your code</h2>
+			<hr/>
+			<p>
+			<h3 class="title">Project code is PSR-2 Coding Style.</h3>
+			<a target="_blank"  href="http://www.php-fig.org/psr/psr-2/">http://www.php-fig.org/psr/psr-2/</a>
+			</p>
+			<br/>
+			<p>
+			<h3 class="title">Generated code is Drupal Coding Style.</h3>
+			<a target="_blank"  href="https://www.drupal.org/coding-standards">https://www.drupal.org/coding-standards</a>
+			</p>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					Before commiting your code you need to know
+				</p>
+				<ol>
+					<li>
+						<p>Since Drupal Console is not a Drupal module is a Symfony application, project code is PSR-2 Coding Style.</p>
+					</li>
+					<li>
+						<p>But don't worry, generated code is Drupal Coding Style.</p>
+					</li>
+				</ol>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Code analysis</h2>
+			<hr/>
+			<p>
+				<img src="assets/images/sensiolabs-platinum-medal.png" class="no-border"><br/>
+				<a target="_blank"  href="http://bit.ly/console-insight">http://bit.ly/console-insight</a>
+			</p>
+			<br/>
+			<p>
+				<img src="assets/images/travis-ci.png" class="no-border"><br/>
+				<br/>
+				<a target="_blank"  href="http://bit.ly/console-travis">http://bit.ly/console-travis</a>
+			</p>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					<strong>We have the Platinum medal:</strong>
+				</p>
+				<p>
+					We use SensioLabsInsight a quality assurance tool to analyzes source code.
+				</p>
+				<p>
+					We use TravisCI, to run unit test on the sent PR.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>PHPQA all-in-one Analyzer CLI tool</h2>
+			<hr/>
+			<ul class="bullets">
+				<li>PHP Parallel Lint</li>
+				<li>PHP_CodeSniffer</li>
+				<li>PHPLOC</li>
+				<li>PHP Mess Detector</li>
+				<li>PHPUnit</li>
+			</ul>
+			<h3 class="title">
+				<a href="https://github.com/jmolivas/phpqa">
+					https://github.com/jmolivas/phpqa
+				</a>
+			</h3>
+			<aside class="notes">
+				<p>
+					We are starting to use this PHPQA tool to analyze code before commiting to the repo.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Running PHPQA manually</h2>
+			<pre><code class="bash text-big">
+$ cd /path/to/DrupalConsole
+$ phpqa analyze --files=src/
+
+</code></pre>
+			<br>
+			<h2>Running PHPQA automatically</h2>
+<pre><code class="bash text-big">
+$ vim .git/hooks/pre-commit
+# Paste this:
+phpqa analyze --git
+
+</code></pre>
+		<aside class="notes">
+			<p>
+				You can run it manually by executing the phpqa command and indicating the files or directory to scan by using the "--files" option.
+			</p>
+			<p>
+				Or maybe you can setup a pre-commit git-hook and use the "--git" option to scan all files added to git index.
+			</p>
+		</aside>
+
+		</section>
+
+		<section>
+			<h2>Contributors</h2>
+			<hr/>
+			<div class="contributors">
+			</div>
+			<aside class="notes">
+				<h3>enzo</h3>
+				<p>
+					This is the hall of fame of Drupal Console.
+				</p>
+				<p>
+					 Without this people I would not be speaking at here.
+				</p>
+			</aside>
+		</section>
+
+<!-- 		<section>
+			<h2>Where are they from</h2>
+			<p>
+				<br/>
+				<img src="assets/images/contributors-map.png" class="no-border">
+				<br/>
+			</p>
+			<aside class="notes">
+				<h3>enzo</h3>
+				<p>
+					Are you wondering where are they from ?
+				</p>
+				<p>
+					As you can see, this is mostly a LatinAmerican project and it's a proof our region can create techonlogy to share with the rest of the world.
+				</p>
+				<p>
+					And with your help we can create a much better project.
+				</p>
+			</aside>
+		</section> -->
+
+		<section>
+				<h2>Spread the word and love.</h2>
+				<hr/>
+        		<p>
+        			<a href="https://gratipay.com/~drupalconsole/" target="_blank"><img src="assets/images/gratipay.svg" class="no-border" style="margin-bottom: -7px;"><span>/~drupalconsole</span></a>
+				</p>
+				<br/>
+				<p>
+					<img src="assets/images/stickers.jpg" class="no-border">
+				</p>
+				<br/>
+				<p>
+					<h3>@drupalconsole | #drupalconsole</h3>
+				</p>
+				<aside class="notes">
+					<h3>jmolivas</h3>
+					<strong>
+						We need all of the help we can get, please use the project and love it or hate it, let us know.
+					</strong>
+					<ul class="bullets">
+						<li>Providing feedback.</li>
+						<li>Asking for new features.</li>
+						<li>Creating issues and sending pull requests.</li>
+						<li>Talking and Tweeting about this project and Proudly showing your Drupal Console sticker. Ping us for stickers at the end.</li>
+					</ul>
+				</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">Roadmap</h1>
+		</section>
+
+		<section>
+			<h3 class="title">Increase code coverage.</h3>
+			<h3 class="title">Multi-site support.</h3>
+			<h3 class="title">Improve documentation and translations.</h3>
+			<h3 class="title">Improve verbose code-output.</h3>
+			<h3 class="title">Dummy content generation.</h3>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>What features are planned for development? </p>
+				<ul class="bullets">
+					<li>Improve verbose code-output for learning. (Please let us know in which generators do you want to see this feature, we want to hear form you)</li>
+					<li>Generate dummy content. Probably using Faker library or Default Content project.</li>
+					<li>Content Staging export/import content.</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Milestones</h2>
+			<hr/>
+			<img src="assets/images/milestones.png" class="no-border">
+			<a href="https://github.com/hechoendrupal/DrupalConsole/milestones">https://github.com/hechoendrupal/DrupalConsole/milestones</a>
+			<aside class="notes">
+				<p>
+					You can see, what features we are currently working at by visiting the milestones URL on the github repo.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Upcomming implementations</h2>
+			<hr/>
+			<h3 class="title">Meta tag</h3>
+			<h3 class="title">Rules</h3>
+			<h3 class="title">[Your module here]</h3>
+			<aside class="notes">
+				<p>
+					I already talk about the webprofier integration.
+				</p>
+				<p>
+					But now I will list the modules with plans or currenlty working on implementing DrupalConsole commands.
+				</p>
+				<ul>
+					<li>MetaTag</li>
+					<li>Rules</li>
+					<li>Your module?</li>
+				</ul>
+			</aside>
+		</section>
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">"Let's work together to make <br/><br/> awesome tools even better."</h1>
+			<h2 class="white">~Greg Anderson</h2>
+			<aside class="notes">
+			<p>
+				At this point, probably some of you are worried or wondering about overlaping with drush.
+			</p>
+			<p>
+				I can tell you, you do not need to worry.
+			</p>
+			</aside>
+		</section>
+
+		<section data-background="assets/images/druplicon-borg-back.png">
+			<h2>Drush integration</h2>
+			<hr/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+				<br/>
+			<p>
+				<a href="https://github.com/drush-ops/drush/pull/1337">https://github.com/drush-ops/drush/pull/1337</a>
+			</p>
+			<aside class="notes">
+				<p>
+					I spend almost two days working with Greg Anderson at Pantheon offices and we made the DrupalConsole bootstrap and it has been improved further since then. 
+				</p>
+				<p>
+					We provide an integration and now drush can register DrupalConsole commands, and you can execute a DrupalConsole command using a drush alias.
+				</p>
+				<p>
+					We're going to be sprinting at BADCamp; anyone who wants to pitch in is welcome to join us.
+				</p>
+			</aside>
+		</section>
+
+
+		<section data-background="#0076C2">
+			<h1 class="medium white">GUI for the CLI.</h1>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					As mentioned before the goal of this project is provide a tool easy to use for everyone.
+				</p>
+				<p>
+					Before we wrap up, I like to talk about a planned feature. We are plannig a GUI for the CLI.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<div>
+				<img src="assets/images/drupalgenerator.png" class="no-border">
+			</div>
+			<p>
+				<a href="http://drupalgenerator.com/">
+					<h3 class="title">http://drupalgenerator.com/</h3>
+				</a>
+			</p>
+			<aside class="notes">
+				<h3>jmolivas</h3>
+				<p>
+					We really want to make the tool even more accessible to all site administrators of Drupal 8.
+				</p>
+				<p>
+					Adding a GUI for Drupal Console as an alternative to the CLI.
+				</p>
+				<p>
+					This could be especially useful for site builders wanting to take advante of this tool without needing to use the command line.
+				</p>
+				<p>
+					It could be used for code generation in the form of a downloadable compressed file.
+				</p>
+			</aside>
+		</section>
+
+		<section>
+			<h2>Questions & Feedback</h2>
+			<hr/>
+			<h3 class="title">Feel free to stalk us or ask any question at:</h3>
+			<br/>
+			<h2 class="dark-blue">@dmouse | @jmolivas</h2>
+			<h2 class="dark-blue">@enzolutions | @omers</h2>
+			<h2 class="dark-blue">@drupalconsole</h2>
+			<p>
+				<br/>
+					<a href="https://gitter.im/hechoendrupal/DrupalConsole">
+						<h2>https://gitter.im/hechoendrupal/DrupalConsole</h2>
+					</a>
+			</p>
+		</section>
+
+			</div>
+		</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script type="text/javascript" src="lib/js/jquery.min.js"></script>
+
+		<script>
+
+
+			var contributors = [
+				'jmolivas',
+'dmouse',
+'enzolutions',
+'omero',
+'danielnv18',
+'vacho',
+'esod',
+'cordoval',
+'Sutharsan',
+'chipkaye',
+'hugronaphor',
+'kgaut',
+'webflo',
+'czettnersandor',
+'fluxsauce',
+'greg-1-anderson',
+'lucasmingarro',
+'Crell',
+'martinfrances107',
+'bojanz',
+'danielrose28',
+'MiguelC301',
+'azarzag',
+'Jaesin',
+'rpayanm',
+'iadyax',
+'alexweber',
+'mimioc',
+'revagomes',
+'Chi-teck',
+'egulias',
+'heilop',
+'LowellMontgomery',
+'mmenavas',
+'sethfischer',
+'emacoti',
+'jeqq',
+'benjy',
+'carlosroh',
+'edutrul',
+'albertvolkman',
+'jjcarrion',
+'dasjo',
+'joshuataylor',
+'kendallsv',
+'kostajh',
+'lussoluca',
+'stevector',
+'ysramirez',
+'brantwynn',
+'langelhc',
+			];
+
+			$.each(contributors, function( index, value ) {
+  				$('.contributors').append('<div class="contributor">' +
+  					'<a target="_blank"  href="https://github.com/'+value+'">' +
+  					'<img src="assets/images/contributors/'+value+'.jpg">' +
+  					'</a>' +
+  					'<div class="username">' + value + '</div></div>');
+			});
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'slide', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/leap/leap.js', async: true }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+		<link rel="stylesheet" href="assets/css/custom.css">
+
+	</body>
+</html>
