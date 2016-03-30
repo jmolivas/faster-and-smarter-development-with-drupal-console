@@ -45,7 +45,7 @@
 							<img src="assets/images/drupal-console.png" class="no-border">
 						</div>
 						<div class="half">
-							<img src="assets/images/fldc-logo.png" class="no-border">
+							<img src="assets/images/camp-logo.png" class="no-border">
 						</div>
 					</div>
 					
@@ -251,69 +251,7 @@
 							</ul>
 					</aside>
 				</section>
-
-				<section data-background="#0076C2">
-					<h1 class="white big">The HTTP Lifecycle</h1>
-				</section>
-
-				<section>
-					<h3 class="title">
-						In every web application, in any language, you always have one goal, read and understand the incoming HTTP request in order to create and return the appropriate HTTP response.
-					</h3>
-					<aside class="notes">
-						<p>In every web application regardless of the used language or framework.</p>
-						<p>You are probably working with PHP using Symfony, Silex, Drupal or Laravel or may you are working with Pyhton using Django or Flask, how about Ruby using Rails or Java developing with Scala.</p>
-						<p>Your only goal as a web developer is to properly understand the incoming HTTP Request in order to build and return and appropiate HTTP response.</p>
-						<p>The client sends an HTTP request. When I said client this could be a web-site, mobile app or even an application runing from the terminal.</p>
-						<p>Now as I mentioned before it is your responsability to build a proper response, this will be based on what the client is asking for, this could be anything form a HTML page to JSON, XML even and attachment or a multimedia file as well.</p>
-					</aside>
-				</section>
-
-				<section>
-					<h2>The Request/Response Flow</h2>
-					<hr/>
-					<br/>
-					<img src="assets/images/request-response-flow.png" class="no-border" />
-					<aside class="notes">
-						<p>Well the flow looks like this.</p>
-						<p>Symfony/Silex/Drupal use the front controller design-pattern. This mean every single request is routed from a PHP file app.php or app_ENV.php in the case of Symfony and index.php if using Silex or Drupal. The main goal of the front controller is to bootstrap your Application and performing the global initialization of required objects.</p>
-						<p>Also takes care of extracting information form the requested URL about the path and match this on the routing system and then execute the proper Controller.</p>
-					</aside>
-				</section>
-
-				<section>
-					<p>
-						<img src="assets/images/request-response-drupal.png" class="no-border" />	
-					</p>
-					<p>
-						<a href="http://www.wellnet.it/en/blog/how-drupal-8-builds-your-pages-infographic">How Drupal 8 builds your pages</a>	
-					</p>
-					
-				</section>
-
-	        <section>
-	          <h2>Routing</h2>
-	          <hr/>
-	          <br/>
-	          <h3 class="title">A route is a map from a URL path to a controller.</h3>
-			  <aside class="notes">
-				<p>We can define a Route as a map from a URL to a controller.</p>
-				<p>Is in the route definition where where we especify the path for a resource and the controller that will be executed.</p>
-				<p>Now that I have been mentioning the Controller</p>
-			  </aside>
-	        </section>
-
-	        <section>
-	          <h2>Controller</h2>
-			  <hr/>
-			  <br/>
-	          <h3 class="title">A controller is a PHP method or call-back that takes information from the HTTP request and constructs and returns an HTTP response.</he>
-			  <aside class="notes">
-				<p>A Controller is a method or call-back that takes information from the HTTP request object and based on the implemented code contructs and returns a proper HTTP response.</p>
-				<p>Lets see how these two looks in code.</p>
-			  </aside>
-	        </section>
-
+	      
 				<section data-background="#0076C2">
 					<h1 class="medium white">How does Drupal Console help?</h1>
 					<p>
@@ -1224,67 +1162,6 @@ $ drupal generate:command
 			</aside>
 		</section>
 
-		<section data-background="#000">
-			<h2 class="white">webprofiler</h2>
-			<hr>
-			<br/><br/>
-			<p>
-				<img src="assets/images/webprofiler.png" class="no-border">
-			<br/><br/>
-				<a target="_blank" class="white" href="https://www.drupal.org/project/webprofiler">
-					<h3 class="title white">https://www.drupal.org/project/webprofiler</h3>
-				</a>
-			</p>
-
-			<aside class="notes">
-				<h3>jmolivas</h3>
-				<p>
-					Let me tell you about the awesome webprofiler project. Which is an implementation of Symfony WebProfiler.
-				</p>
-				<p>
-					The web-profiler collects information for all requests.
-				</p>
-				<p>
-					You can see how long the page take to load, how much memory was used, the number of executed SQL querys, the loaded forms and blocks, the current logged user between others.
-				</p>
-				<p>
-					This module was the first module to take advantage of Drupal Console features.
-				</p>
-			</aside>
-		</section>
-
-		<section data-background="#000">
-			<h2 class="white">webprofiler:benchmark  </h2>
-			<hr/>
-			<img class="no-border" src="assets/images/drupal-webprofiler-benchmark.png">
-			<aside class="notes">
-			<p>
-				This command allow you to execute several request against your Drupal site and show you a result of average execution time and cosumed memory.
-			</p>
-			</aside>
-		</section>
-
-		<section data-background="#000">
-			<h2 class="white">webprofiler</h2>
-<pre><code class="bash text-big">
-  webprofiler:benchmark             
-  webprofiler:export                
-  webprofiler:list                  
-
-</code></pre>
-		</section>
-
-<!-- 		<section data-background="#0076C2">
-			<h1 class="medium white">Automate command execution</h1>
-			<aside class="notes">
-				<h3>enzo</h3>
-				<ul>
-					<li>We have mentioned how to run individual commands.</li>
-					<li>But if you are looking to automate command execution you can use the chain command.</li>
-				</ul>
-			</aside>
-		</section> -->
-
 		<section data-background="#0076C2">
 			<h1 class="medium white">Remote command execution</h1>
 			<aside class="notes">
@@ -1700,81 +1577,6 @@ $ composer install
 		</section>
 
 		<section>
-			<h2>Code analysis</h2>
-			<hr/>
-			<p>
-				<img src="assets/images/sensiolabs-platinum-medal.png" class="no-border"><br/>
-				<a target="_blank"  href="http://bit.ly/console-insight">http://bit.ly/console-insight</a>
-			</p>
-			<br/>
-			<p>
-				<img src="assets/images/travis-ci.png" class="no-border"><br/>
-				<br/>
-				<a target="_blank"  href="http://bit.ly/console-travis">http://bit.ly/console-travis</a>
-			</p>
-			<aside class="notes">
-				<h3>jmolivas</h3>
-				<p>
-					<strong>We have the Platinum medal:</strong>
-				</p>
-				<p>
-					We use SensioLabsInsight a quality assurance tool to analyzes source code.
-				</p>
-				<p>
-					We use TravisCI, to run unit test on the sent PR.
-				</p>
-			</aside>
-		</section>
-
-		<section>
-			<h2>PHPQA all-in-one Analyzer CLI tool</h2>
-			<hr/>
-			<ul class="bullets">
-				<li>PHP Parallel Lint</li>
-				<li>PHP_CodeSniffer</li>
-				<li>PHPLOC</li>
-				<li>PHP Mess Detector</li>
-				<li>PHPUnit</li>
-			</ul>
-			<h3 class="title">
-				<a href="https://github.com/jmolivas/phpqa">
-					https://github.com/jmolivas/phpqa
-				</a>
-			</h3>
-			<aside class="notes">
-				<p>
-					We are starting to use this PHPQA tool to analyze code before commiting to the repo.
-				</p>
-			</aside>
-		</section>
-
-		<section data-background="#000000">
-			<h2 class="white">Running PHPQA manually</h2>
-			<pre><code class="bash text-big">
-$ cd /path/to/DrupalConsole
-$ phpqa analyze --files=src/
-
-</code></pre>
-			<br>
-			<h2 class="white">Running PHPQA automatically</h2>
-<pre><code class="bash text-big">
-$ vim .git/hooks/pre-commit
-# Paste this:
-phpqa analyze --git
-
-</code></pre>
-		<aside class="notes">
-			<p>
-				You can run it manually by executing the phpqa command and indicating the files or directory to scan by using the "--files" option.
-			</p>
-			<p>
-				Or maybe you can setup a pre-commit git-hook and use the "--git" option to scan all files added to git index.
-			</p>
-		</aside>
-
-		</section>
-
-		<section>
 			<h2>Contributors</h2>
 			<hr/>
 			<p>
@@ -1953,54 +1755,38 @@ phpqa analyze --git
 				<p>
 					Before we wrap up, I like to talk about a planned feature.
 				</p>
+				<p>
+					As mentioned before the goal of this project is provide a tool easy to use for everyone.
+				</p>
+				<p>
+					We are writing a GUI for the CLI.
+				</p>
 			</aside>
 		</section>
 
 		<section data-background="#000">
 			<h1 class="medium white">GUI for the CLI.</h1>
-			<br/><br/>
-			<h2 class="white">WebApp => ReactJS</h2>
-			<aside class="notes">
-				<h3>jmolivas</h3>
-				<p>
-					As mentioned before the goal of this project is provide a tool easy to use for everyone.
-				</p>
-				<p>
-					We are plannig a GUI for the CLI.
-				</p>
-			</aside>
-		</section>
-
-		<section>
-			<div>
-				<img src="assets/images/drupalgenerator.png" class="no-border">
-			</div>
+			<hr/>
 			<p>
-				<a href="http://drupalgenerator.com/">
-					<h3 class="title">http://drupalgenerator.com/</h3>
-				</a>
+				<h2 class="white">Desktop/Native application using:</h2>
+			</p>
+			<p>
+				<h2 class="white">Electron</h2>
+				<h2 class="white">ReactJS</h2>
+				<h2 class="white">ES6</h2>
 			</p>
 			<aside class="notes">
 				<h3>jmolivas</h3>
 				<p>
-					We really want to make the tool even more accessible to all site administrators of Drupal 8.
+					We really want to make the tool even more accessible to all users of Drupal 8.
 				</p>
 				<p>
 					Adding a GUI for Drupal Console as an alternative to the CLI.
 				</p>
 				<p>
-					This could be especially useful for site builders wanting to take advante of this tool without needing to use the command line.
-				</p>
-				<p>
-					It could be used for code generation in the form of a downloadable compressed file.
+					This could be especially useful for site builders wanting to take advantage of this tool without needing to use the command line.
 				</p>
 			</aside>
-		</section>
-
-		<section data-background="#000">
-			<h1 class="medium white">How about a Native app?.</h1>
-			<br/><br/>
-			<h2 class="white">NativeApp => Electron</h2>
 		</section>
 
 		<section>
