@@ -1,3 +1,3 @@
-# Faster and Smarter Development with Drupal Console
+# Speeding up Drupal 8 development using Drupal Console
 
-DrupalCamp México 2015
+DrupalCon Los Angeles 2015
