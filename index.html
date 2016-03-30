@@ -1541,9 +1541,8 @@ phpqa analyze --git
 
 		<section>
 			<h2>Contributors</h2>
-			<hr/>
-			<div class="contributors">
-			</div>
+      <hr/>
+      <ul id="contributors-list"></ul>
 			<aside class="notes">
 				<h3>enzo</h3>
 				<p>
@@ -1769,68 +1768,54 @@ phpqa analyze --git
 
 		<script>
 
+$(document).ready(function() {
+  gitHubContributors();
 
-			var contributors = [
-				'jmolivas',
-'dmouse',
-'enzolutions',
-'omero',
-'danielnv18',
-'vacho',
-'esod',
-'cordoval',
-'Sutharsan',
-'chipkaye',
-'hugronaphor',
-'kgaut',
-'webflo',
-'czettnersandor',
-'fluxsauce',
-'greg-1-anderson',
-'lucasmingarro',
-'Crell',
-'martinfrances107',
-'bojanz',
-'danielrose28',
-'MiguelC301',
-'azarzag',
-'Jaesin',
-'rpayanm',
-'iadyax',
-'alexweber',
-'mimioc',
-'revagomes',
-'Chi-teck',
-'egulias',
-'heilop',
-'LowellMontgomery',
-'mmenavas',
-'sethfischer',
-'emacoti',
-'jeqq',
-'benjy',
-'carlosroh',
-'edutrul',
-'albertvolkman',
-'jjcarrion',
-'dasjo',
-'joshuataylor',
-'kendallsv',
-'kostajh',
-'lussoluca',
-'stevector',
-'ysramirez',
-'brantwynn',
-'langelhc',
-			];
+});
+function gitHubContributors() {
 
-			$.each(contributors, function( index, value ) {
-  				$('.contributors').append('<div class="contributor">' +
-  					'<a target="_blank"  href="https://github.com/'+value+'">' +
-  					'<img src="assets/images/contributors/'+value+'.jpg">' +
-  					'</a>' +
-  					'<div class="username">' + value + '</div></div>');
-			});
+    var
+    howMany = 70,
+    baseUrl = 'https://api.github.com/repos/hechoendrupal/DrupalConsole/contributors?per_page=' + howMany + '&callback=?',
+    $contributorsOutput = $("#contributors-list"),
+    $pager = $(".pager");
+
+    function _listContributors(data) {
+      $contributorsOutput.html("");
+      var html = '';
+      $(data).each(function(i, user) {
+        html += '<li><a href="' + user.url.replace('api.', '').replace('users/', '') + '"><img src="' + user.avatar_url + '" alt="' + user.login + '" class="contributor-avatar"></a></li>';
+      });
+      $contributorsOutput.html(html);
+    }
+
+    function _getContributors(apiUrl) {
+      $.ajax({
+        type: 'GET',
+        url: apiUrl,
+        async: true,
+        crossDomain: true,
+        contentType: "application/json",
+        dataType: 'jsonp',
+        success: function(data) {
+          if (data.meta.status != "200") {
+            _throwError(data.meta);
+          } else {
+            _listContributors(data.data); // output contribs
+          }
+        },
+        error: function(e) {
+          console.log(e.message);
+        }
+      });
+    }
+
+    function _throwError(data) {
+      $contributorsOutput.text("Error");
+      console.log(data);
+    }
+    _getContributors(baseUrl);
+  }
 
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
