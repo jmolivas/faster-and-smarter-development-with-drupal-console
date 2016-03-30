@@ -1,1 +1,1 @@
-# Speeding up Drupal 8 development using Drupal Console - slide deck
+# Faster and Smarter Development with Drupal Console - slide deck
